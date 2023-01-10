@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "messages-app-561f1"
+  },
+  "targets": {
+    "messages-app-561f1": {
+      "hosting": {
+        "messages-app": [
+          "messages-app-561f1"
+        ]
+      }
+    }
+  }
+}
