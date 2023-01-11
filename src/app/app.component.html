@@ -1,6 +1,12 @@
-<ul class="navbar">
-    <li class="navbar-item" [routerLink]="'/home'" routerLinkActive="active-link">Home</li>
-    <li class="navbar-item" [routerLink]="'/messages'" routerLinkActive="active-link">Messages</li>
-</ul>
+<mat-toolbar color="primary">
+    <span>{{ currentRoute | slice:1 | uppercase }}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [routerLink]="'/home'">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="'/messages'">
+      <mat-icon>message</mat-icon>
+    </button>
+  </mat-toolbar>
 
 <router-outlet></router-outlet>

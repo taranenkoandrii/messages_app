@@ -13,6 +13,9 @@ import { messagesReducer } from './store/messages/messages.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { MessagesEffects } from './store/messages';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
