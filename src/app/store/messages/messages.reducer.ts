@@ -11,7 +11,7 @@ export interface IMessagesState {
 export const initialState: IMessagesState = {
   isLoading: false,
   messages: [],
-  error: ''
+  error: '',
 };
 
 export function messagesReducer(
@@ -49,12 +49,12 @@ const reducer = createReducer<IMessagesState>(
     ...state,
     messages,
     isLoading: false,
-    error: ''
+    error: '',
   })),
 
   on(messagesActions.CreateMessageFailure, (state, { error }) => ({
     ...state,
     isLoading: false,
-    error
+    error,
   }))
 );

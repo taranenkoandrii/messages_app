@@ -43,7 +43,9 @@ export class MessagesEffects {
             }));
             return messagesActions.CreateMessageSuccess({ messages });
           }),
-          catchError((error: Error) => of(messagesActions.CreateMessageFailure({ error: error.message })))
+          catchError((error: Error) =>
+            of(messagesActions.CreateMessageFailure({ error: error.message }))
+          )
         )
       )
     );

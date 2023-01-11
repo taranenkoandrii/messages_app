@@ -15,7 +15,10 @@ export class MessageService {
   messagesRef: AngularFirestoreCollection<IMessage>;
 
   constructor(private db: AngularFirestore) {
-    this.messagesRef = this.db.collection(this.dbPath, ref => ref.orderBy('date'));
+    this.messagesRef = this.db.collection(
+      this.dbPath,
+      (ref) => ref.orderBy('date')
+    );
   }
 
   getAll(): Observable<DocumentChangeAction<IMessage>[]> {
