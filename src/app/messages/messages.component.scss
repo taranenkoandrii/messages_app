@@ -1,9 +1,25 @@
 .container {
-    padding: 0 40px;
+  padding: 0 40px;
 }
 
 .header {
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-column-id {
+  width: 10% !important;
+}
+
+.mat-column-name {
+  width: 20% !important;
+}
+
+.mat-column-message {
+  width: 55% !important;
+}
+
+.mat-column-date {
+  width: 15% !important;
 }

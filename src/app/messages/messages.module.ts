@@ -10,6 +10,9 @@ import { MessagesRoutingModule } from './messages-routing.module';
 import { MessagesComponent } from './messages.component';
 import { MessagesDialogComponent } from './messages-dialog/messages-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [MessagesComponent, MessagesDialogComponent],
@@ -23,6 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
 })
 export class MessagesModule {}

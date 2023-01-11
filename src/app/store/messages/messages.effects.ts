@@ -22,9 +22,10 @@ export class MessagesEffects {
               id: c.payload.doc.id,
               ...c.payload.doc.data(),
             }));
+
             return messagesActions.GetMessagesSuccess({ messages });
           }),
-          catchError(() => of(messagesActions.GetMessagesFailure()))
+          catchError((error: Error) => of(messagesActions.GetMessagesFailure()))
         )
       )
     );
@@ -42,7 +43,7 @@ export class MessagesEffects {
             }));
             return messagesActions.CreateMessageSuccess({ messages });
           }),
-          catchError(() => of(messagesActions.CreateMessageFailure()))
+          catchError((error: Error) => of(messagesActions.CreateMessageFailure({ error: error.message })))
         )
       )
     );

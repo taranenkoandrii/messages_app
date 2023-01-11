@@ -5,11 +5,13 @@ import { messagesActions } from '.';
 export interface IMessagesState {
   isLoading: boolean;
   messages: IMessage[];
+  error: string;
 }
 
 export const initialState: IMessagesState = {
   isLoading: false,
   messages: [],
+  error: ''
 };
 
 export function messagesReducer(
@@ -47,10 +49,12 @@ const reducer = createReducer<IMessagesState>(
     ...state,
     messages,
     isLoading: false,
+    error: ''
   })),
 
-  on(messagesActions.CreateMessageFailure, (state) => ({
+  on(messagesActions.CreateMessageFailure, (state, { error }) => ({
     ...state,
     isLoading: false,
+    error
   }))
 );

@@ -20,5 +20,6 @@ export const CreateMessageSuccess = createAction(
   props<{ messages: IMessage[] }>()
 );
 export const CreateMessageFailure = createAction(
-  '[Messages] Create Message Failure'
+  '[Messages] Create Message Failure',
+  props<{ error: string }>()
 );
