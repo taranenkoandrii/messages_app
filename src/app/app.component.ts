@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url ? event.url : '/home';
+        this.currentRoute = event.url.length > 1 ? event.url : '/home';
       }
     });
   }
