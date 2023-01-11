@@ -1,0 +1,18 @@
+.dialog-title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialog-content {
+    form {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
