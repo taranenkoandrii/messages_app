@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { Observable, switchMap, take } from 'rxjs';
+import { Observable, Subscription, switchMap, take } from 'rxjs';
 
 import { messagesActions, messagesSelectors } from '../store/messages';
 import { IMessagesState } from '../store/messages/messages.reducer';
@@ -14,12 +14,15 @@ import { IMessage } from './models/message';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss'],
 })
-export class MessagesComponent {
+export class MessagesComponent implements OnDestroy {
+  private subscriptions: Subscription[] = [];
+
   constructor(
     public dialog: MatDialog,
     private messageStore: Store<IMessagesState>,
     private _snackBar: MatSnackBar
   ) {}
+
   displayedColumns: string[] = ['id', 'name', 'message', 'date'];
   messages$!: Observable<IMessage[]>;
   isLoading$ = this.messageStore.select(messagesSelectors.isLoading);
@@ -32,7 +35,7 @@ export class MessagesComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(MessagesDialogComponent, {});
 
-    dialogRef
+    const sub = dialogRef
       .afterClosed()
       .pipe(
         switchMap((dialogData: IMessage) => {
@@ -50,9 +53,16 @@ export class MessagesComponent {
           duration: 2000,
         });
       });
+    this.subscriptions.push(sub);
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => {
+      sub.unsubscribe;
+    });
   }
 }
